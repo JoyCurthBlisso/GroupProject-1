@@ -25,7 +25,7 @@ $(document).ready(function() {
       // Update the current user UID.
 
       currentUid = user.uid;
-      goToHome();
+
 
     } else {
       // Sign out operation. Reset the current user UID.
