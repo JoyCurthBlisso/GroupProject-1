@@ -70,9 +70,14 @@
     submit.on("click", function(event) {
       var name = $("#restaurant").val();
       var address = $("restuarant-address").val();
-      var database = firebase.database()
+      var database = firebase.database();
+      goToHome();
       database.ref().push(name);
     });
+
+    function goToHome(){
+      loction.href = "https://joycurthblisso.github.io/GroupProject-1/Donate.html"
+    }
 
   </script>
 </html>
