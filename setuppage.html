@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Setup Page</title>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+  </head>
+  <body>
+    <h1>Setup Your Account</h1>
+    <h2>Are you a food donor or a food requester?</h2>
+    <br>
+    <div id="buttongroup">
+      <button id="donor">Donor</button>
+      <button id="requester">Requester</button>
+    </div>
+
+    <form id="organization-form" hidden>
+      Organization Name: <input type="text" id="organization" name="organization">
+      <br></br>
+      Address: <input type="text" id="organization-address" name="organization-address">
+      <br></br>
+    </form>
+
+    <form id="restaurant-form" hidden>
+      Restaurant: <input type="text" id="restaurant" name="restaurant">
+      <br></br>
+      Pickup Address: <input type="text" id="restuarant-address" name="restuarant-address">
+      <br></br>
+    </form>
+
+    <button id="submit">Submit</button>
+
+  </body>
+
+  <script type="text/javascript">
+
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
+      authDomain: "fir-project-ca268.firebaseapp.com",
+      databaseURL: "https://fir-project-ca268.firebaseio.com",
+      projectId: "fir-project-ca268",
+      storageBucket: "",
+      messagingSenderId: "60944439745"
+    };
+
+    firebase.initializeApp(config);
+
+    var organizationForm = $("#organization-form");
+    var restaurantForm = $("#restaurant-form");
+    var buttons = $("#buttongroup");
+    var submit = $("#submit");
+
+    organizationForm.hide();
+    restaurantForm.hide();
+    submit.hide();
+
+
+    $("#donor").on("click", function(event) {
+        console.log("donor clicked")
+        restaurantForm.show();
+        submit.show();
+        buttons.hide();
+        //hide #organization-form
+        //show #restaurant-form
+        //hide buttons
+    });
+
+    $("#requester").on("click", function(event) {
+        console.log("requester clicked")
+        organizationForm.show();
+        submit.show();
+        buttons.hide();
+        //show #organization-form
+        //hide #restaurant-form
+        //hide buttons
+    });
+
+    submit.on("click", function(event){
+      var name = $("#restaurant").val();
+      var address = $("restuarant-address").val();
+      var database = firebase.database()
+
+      database.ref().push(name);
+    });
+
+
+
+  </script>
+</html>
