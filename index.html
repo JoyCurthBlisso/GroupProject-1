@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<title> KarmaFoodBank </title>
 
@@ -11,11 +12,15 @@
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> --> <!-- //Bootstrap CDN -->
+	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+	<!-- //Bootstrap CDN -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-	<script type="text/javascript" src="assets/javascript/trialjs.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+	<script type="text/javascript" src='assets/javascript/app.js'></script>
 
 
 </head>
@@ -24,25 +29,25 @@
 <body>
 
 	<nav>
-	    <div class="nav-wrapper deep-orange darken-1">
+		<div class="nav-wrapper deep-orange darken-1">
 
-	     	<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
 
-		        <li><a href="pagesbkg.html">Navigation Page</a></li>
-		        <li><a href="donate.html">Donate</a></li>
-		        <li><a href="angels.html">Angels</a></li>
-		        <li><a href="TermsConditions.html">Terms&Conditions</a></li>
+				<li><a href="pagesbkg.html">Navigation Page</a></li>
+				<li><a href="donate.html">Donate</a></li>
+				<li><a href="angels.html">Angels</a></li>
+				<li><a href="TermsConditions.html">Terms&Conditions</a></li>
 
-	      	</ul>
+			</ul>
 
-	   	</div>
+		</div>
 	</nav>
 
 
 	<header class="deep-orange darken-1">
 		<div class="container">
-  			  <h2 class="display-3 center-align"> KarmaFoodBank </h2>
- 		</div>
+			<h2 class="display-3 center-align"> KarmaFoodBank </h2>
+		</div>
 	</header>
 
 
@@ -55,7 +60,7 @@
 				<h4 class="center-align">Login</h4>
 			</div>
 
-			<div class="container" id="authBox"> </div>
+			<div id="firebaseui-auth-container"></div>
 
 		</div>
 	</div>
@@ -70,7 +75,7 @@
 
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 
 </html>
