@@ -34,7 +34,7 @@ $(document).ready(function() {
 
       // FirebaseUI config.
       var uiConfig = {
-        signInSuccessUrl: 'https://clarkwmcd.github.io/firebaseProject/setup.html',
+        signInSuccessUrl: 'https://joycurthblisso.github.io/GroupProject-1/setuppage.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
