@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  //Materialize CSS parralax function
+  // $('.parallax').parallax();
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
@@ -70,6 +73,10 @@ $(document).ready(function() {
     console.log("donor clicked")
     restaurantForm.show();
     submit.show();
+
+    organizationForm.hide();
+    // $("#organization").val("");
+    // $("#organization-address").val("");
     buttons.hide();
     //hide #organization-form
     //show #restaurant-form
@@ -80,6 +87,10 @@ $(document).ready(function() {
     console.log("requester clicked")
     organizationForm.show();
     submit.show();
+
+    restaurantForm.hide();
+    // $("#restaurant").val("");
+    // $("#restaurant-address").val("");
     buttons.hide();
     //show #organization-form
     //hide #restaurant-form
@@ -88,10 +99,9 @@ $(document).ready(function() {
 
   submit.on("click", function(event) {
     var name = $("#restaurant").val();
-    var address = $("restuarant-address").val();
-    var database = firebase.database();
-    goToHome();
-    // database.ref().push(name);
+    var address = $("#restaurant-address").val();
+    var database = firebase.database()
+    database.ref().push(name);
   });
 
   //END SETUP PAGE JS
