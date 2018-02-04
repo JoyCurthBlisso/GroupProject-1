@@ -28,6 +28,7 @@ $(document).ready(function() {
       // Update the current user UID.
 
       currentUid = user.uid;
+      console.log(currentUid);
 
 
     } else {
@@ -101,7 +102,7 @@ $(document).ready(function() {
     var name = $("#restaurant").val();
     var address = $("#restaurant-address").val();
     var database = firebase.database()
-    database.ref().push(name);
+    database.ref().push(name).push(address);
   });
 
   //END SETUP PAGE JS
