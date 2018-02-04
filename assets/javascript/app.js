@@ -1,23 +1,28 @@
 $(document).ready(function() {
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
-      authDomain: "fir-project-ca268.firebaseapp.com",
-      databaseURL: "https://fir-project-ca268.firebaseio.com",
-      projectId: "fir-project-ca268",
-      storageBucket: "",
-      messagingSenderId: "60944439745"
-    };
+  //Materialize CSS parralax function
+  // $('.parallax').parallax();
 
-    firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
+    authDomain: "fir-project-ca268.firebaseapp.com",
+    databaseURL: "https://fir-project-ca268.firebaseio.com",
+    projectId: "fir-project-ca268",
+    storageBucket: "",
+    messagingSenderId: "60944439745"
+  };
 
-    var currentUid = null;
+  firebase.initializeApp(config);
 
-    firebase.auth().onAuthStateChanged(function(user) {
-     // onAuthStateChanged listener triggers every time the user ID token changes.
-     // This could happen when a new user signs in or signs out.
-     // It could also happen when the current user ID token expires and is refreshed.
-     if (user && user.uid != currentUid) {
+  //START AUTHENTICATION
+
+  var currentUid = null;
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    // onAuthStateChanged listener triggers every time the user ID token changes.
+    // This could happen when a new user signs in or signs out.
+    // It could also happen when the current user ID token expires and is refreshed.
+    if (user && user.uid != currentUid) {
       // Update the UI when a new user signs in.
       // Otherwise ignore if this is a token refresh.
       // Update the current user UID.
@@ -25,14 +30,14 @@ $(document).ready(function() {
       currentUid = user.uid;
       document.body.innerHTML = '<h1> Congrats ' + user.displayName + ', you are done! </h1> <h2> Need to verify your email address or reset your password? Firebase can handle all of that for you using the email you provided: ' + user.email + '. <h/2>';
 
-     } else {
+    } else {
       // Sign out operation. Reset the current user UID.
       currentUid = null;
       console.log("no user signed in");
 
       // FirebaseUI config.
       var uiConfig = {
-        signInSuccessUrl: 'https://clarkwmcd.github.io/firebaseProject/setup.html',
+        signInSuccessUrl: 'https://joycurthblisso.github.io/GroupProject-1/setuppage.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -47,33 +52,56 @@ $(document).ready(function() {
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
       ui.start('#firebaseui-auth-container', uiConfig);
-      }
-
-    });
-
-
-      // firebase.database().ref().push("user address")
-
-      // $("#firebaseui-auth-container").on("click", writeUserData);
-      //
-      // function writeUserData(userId, name, email, imageUrl, state) {
-      //   firebase.database().ref('users/' + userId).set({
-      //     username: name,
-      //     email: email,
-      //     profile_picture : imageUrl,
-      //     state: state
-      //   });
-      // }
-
-      // var user = firebase.auth().currentUser;
-      // var name, email, photoUrl, uid, emailVerified;
-      //
-      // if (user != null) {
-      //   name = user.displayName;
-      //   email = user.email;
-      //   photoUrl = user.photoURL;
-      //   emailVerified = user.emailVerified;
-      //   uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use this value to authenticate with your backend server, if you have one. Use User.getToken() instead.
-      // }
+    }
 
   });
+
+  //END AUTHENTICATION
+
+  //START SETUP PAGE JS
+
+  var organizationForm = $("#organization-form");
+  var restaurantForm = $("#restaurant-form");
+  var buttons = $("#buttongroup");
+  var submit = $("#submit");
+
+  organizationForm.hide();
+  restaurantForm.hide();
+  submit.hide();
+
+  $("#donor").on("click", function(event) {
+    console.log("donor clicked")
+    restaurantForm.show();
+    submit.show();
+
+    organizationForm.hide();
+    // $("#organization").val("");
+    // $("#organization-address").val("");
+    buttons.hide();
+    //hide #organization-form
+    //show #restaurant-form
+    //hide buttons
+  });
+
+  $("#requester").on("click", function(event) {
+    console.log("requester clicked")
+    organizationForm.show();
+    submit.show();
+
+    restaurantForm.hide();
+    // $("#restaurant").val("");
+    // $("#restaurant-address").val("");
+    buttons.hide();
+    //show #organization-form
+    //hide #restaurant-form
+    //hide buttons
+  });
+
+  submit.on("click", function(event) {
+    var name = $("#restaurant").val();
+    var address = $("#restaurant-address").val();
+    var database = firebase.database()
+    database.ref().push(name);
+  });
+
+});
