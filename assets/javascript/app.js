@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  //Materialize CSS parralax function
+  $('.parallax').parallax();
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
@@ -88,7 +91,7 @@ $(document).ready(function() {
 
   submit.on("click", function(event) {
     var name = $("#restaurant").val();
-    var address = $("restuarant-address").val();
+    var address = $("#restaurant-address").val();
     var database = firebase.database()
     database.ref().push(name);
   });
