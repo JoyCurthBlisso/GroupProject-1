@@ -28,7 +28,7 @@ $(document).ready(function() {
       // Update the current user UID.
 
       currentUid = user.uid;
-      document.body.innerHTML = '<h1> Congrats ' + user.displayName + ', you are done! </h1> <h2> Need to verify your email address or reset your password? Firebase can handle all of that for you using the email you provided: ' + user.email + '. <h/2>';
+
 
     } else {
       // Sign out operation. Reset the current user UID.
@@ -103,5 +103,12 @@ $(document).ready(function() {
     var database = firebase.database()
     database.ref().push(name);
   });
+
+  //END SETUP PAGE JS
+
+  function goToHome() {
+    location.href = "https://joycurthblisso.github.io/GroupProject-1/Donate.html"
+  }
+
 
 });
