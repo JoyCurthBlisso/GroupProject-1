@@ -101,7 +101,7 @@ $(document).ready(function() {
   submit.on("click", function(event) {
     var name = $("#restaurant").val();
     var address = $("#restaurant-address").val();
-    var database = firebase.database()
+    var database = firebase.database();
     database.ref().push(name).push(address);
   });
 
