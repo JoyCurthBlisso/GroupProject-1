@@ -17,9 +17,6 @@
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-
-
 </head>
 
 
@@ -47,6 +44,13 @@
 	</header>
 
 	<main>
+
+	
+		<div class="parallax-container">
+			<div class="parallax"><img src="assets/staff.jpg"></div>
+		</div>
+
+
 		<div class="section white">
 
 			<div class="container">
@@ -97,6 +101,12 @@
 
 		  	</div>
   		</div>
+
+		<div class="parallax-container">
+			<div class="parallax"><img src="assets/food.jpg"></div>
+		</div>
+
+
   	</main>
 
 
@@ -110,5 +120,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+	 //Materialize CSS parralax function
+		  $('.parallax').parallax();
+
+	});
+
+</script>
 
 </html>
