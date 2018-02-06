@@ -13,6 +13,7 @@ $(document).ready(function() {
   };
 
   firebase.initializeApp(config);
+  console.log(firebase);
 
   //START AUTHENTICATION
 
