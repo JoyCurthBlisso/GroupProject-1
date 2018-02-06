@@ -60,6 +60,7 @@ $(document).ready(function() {
 
   //END AUTHENTICATION
 
+<<<<<<< HEAD
   //START SETUP PAGE JS
 
   var organizationForm = $("#organization-form");
@@ -102,15 +103,18 @@ $(document).ready(function() {
   submit.on("click", function(event) {
     var name = $("#restaurant").val();
     var address = $("#restaurant-address").val();
-    var database = firebase.database()
+    var database = firebase.database();
     database.ref().push(name).push(address);
   });
+=======
+>>>>>>> 610645cad13c222d1a00a25b98fc69d6de0af06d
 
-  //END SETUP PAGE JS
 
   function goToHome() {
     location.href = "https://joycurthblisso.github.io/GroupProject-1/Donate.html"
-  }
+  };
+
+
 
 
 });
