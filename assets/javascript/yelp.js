@@ -36,8 +36,10 @@ $(document).ready(function() {
         // $("#yelpInfo").append(img);
         // var img = $('<div>Name: ' + item.name);
         // call
-        var restuarantList = $('<div>' + item.name + ' Location: ' + item.location.address1 + ' ' + item.location.city + " " + item.location.state + " " + item.location.zip_code + '<button type="button" class="selectName">submit</button></div>');
-        $("#yelpInfo").append(restuarantList);
+
+        var organizationYelpAddress = item.location.address1 + ", " + item.location.city + ", " + item.location.city + " " + item.location.state + " " + item.location.zip_code;
+        var organizationYelpList = $('<div>' + item.name + ' Location: ' + item.location.address1 + ' ' + item.location.city + " " + item.location.state + " " + item.location.zip_code + '<button type="button" class="selectName" data-name="'+ item.name + '" data-address="' + organizationYelpAddress + '"">submit</button></div>');
+        $("#yelpInfo").append(organizationYelpList);
       });
 
 
@@ -46,9 +48,9 @@ $(document).ready(function() {
 
   };
   $(document).on("click", ".selectName", function(event) {
-    // location.href="Angels.html"
-    // var selectedDonor = $(this);
-    // console.log(selectedDonor.data('name'));
+    
+    var selectedDonor = $(this);
+    console.log(selectedDonor.data('name'));
 
     event.preventDefault();
     // var user = firebase.auth().currentUser.uid;
@@ -56,12 +58,14 @@ $(document).ready(function() {
 
     var profile = {
       user: user,
-      organization: yelpObject.business[0].name,
-      // organizationAddress: yelpObject.location.address1
+      organization: selectedDonor.data('name'),
+      organizationAddress: selectedDonor.data('address')
     };
     console.log(profile);
 
     firebase.database().ref().push(profile);
+
+    // location.href="Angels.html"
 
   });
 });
