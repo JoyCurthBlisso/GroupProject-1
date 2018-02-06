@@ -59,6 +59,54 @@ $(document).ready(function() {
 
   //END AUTHENTICATION
 
+<<<<<<< HEAD
+  //START SETUP PAGE JS
+
+  var organizationForm = $("#organization-form");
+  var restaurantForm = $("#restaurant-form");
+  var buttons = $("#buttongroup");
+  var submit = $("#submit");
+
+  organizationForm.hide();
+  restaurantForm.hide();
+  submit.hide();
+
+  $("#donor").on("click", function(event) {
+    console.log("donor clicked")
+    restaurantForm.show();
+    submit.show();
+
+    organizationForm.hide();
+    // $("#organization").val("");
+    // $("#organization-address").val("");
+    buttons.hide();
+    //hide #organization-form
+    //show #restaurant-form
+    //hide buttons
+  });
+
+  $("#requester").on("click", function(event) {
+    console.log("requester clicked")
+    organizationForm.show();
+    submit.show();
+
+    restaurantForm.hide();
+    // $("#restaurant").val("");
+    // $("#restaurant-address").val("");
+    buttons.hide();
+    //show #organization-form
+    //hide #restaurant-form
+    //hide buttons
+  });
+
+  submit.on("click", function(event) {
+    var name = $("#restaurant").val();
+    var address = $("#restaurant-address").val();
+    var database = firebase.database();
+    database.ref().push(name).push(address);
+  });
+=======
+>>>>>>> 610645cad13c222d1a00a25b98fc69d6de0af06d
 
 
   function goToHome() {
