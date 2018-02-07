@@ -68,8 +68,8 @@ $(document).ready(function() {
 
     var profile = {
       user: user,
-      restaurant: selectedDonor.data('name'),
-      restaurantAddress: selectedDonor.data('address')
+      restaurant: "Roxy",
+      restaurantAddress: "Roxy's mansion"
     };
 
     console.log(profile);
