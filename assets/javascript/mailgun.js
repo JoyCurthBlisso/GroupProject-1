@@ -1,3 +1,5 @@
+//JS FOR THE DONATE.HTML PAGE (SEND EMAIL TO DONOR)
+
 $(document).ready(function() {
 
 function donatorEmail(userEmail, donationType, numPeople, donationValue, pickUpTime) {
