@@ -63,8 +63,8 @@
 						<div class="row">
 
 							<div class="input-field col s12">
-								<input id="donateFood" type="text" class="validate">
-								<label for="donateFood">What would you like to donate today?</label>
+								<input placeholder="ex: pizzas, desert, full menus" id="donateFood" type="text" class="validate">
+								<label for="donateFood"><h5>What would you like to donate today?</h5></label>
 							</div>
 
 						</div>
@@ -72,8 +72,8 @@
 						<div class="row">
 
 							<div class="input-field col s12">
-								<input id="menuNumber" type="text" class="validate">
-								<label for="menuNumber">For how many people?</label>
+								<input placeholder="2, 4, 6, how many portions you have :)" id="menuNumber" type="text" class="validate">
+								<label for="menuNumber"><h5>For how many people?</h5></label>
 							</div>
 
 						</div>
@@ -81,8 +81,8 @@
 						<div class="row">
 
 							<div class="input-field col s12">
-								<input id="value" type="text" class="validate">
-								<label for="value">Aproximate value:</label>
+								<input placeholder="$value" id="value" type="text" class="validate">
+								<label for="value"><h5>Aproximate value:</h5></label>
 							</div>
 
 						</div>
@@ -90,20 +90,33 @@
 						<div class="row">
 
 							<div class="input-field col s12">
-								<input id="pickUp" type="text" class="validate">
-								<label for="pickUp">Pick-up time:</label>
+								<input placeholder="10:00 PM - 11:30 PM" id="pickUp" type="text" class="validate">
+								<label for="pickUp"><h5>Pick-up time:</h5></label>
 							</div>
 
 						</div>
 
 						<div class="row">
-							<button class="btn waves-effect waves-light" type="submit" name="action">Confirm&Publish
+							<button class="btn waves-effect waves-light" type="submit" name="action" id="submitBtn">Confirm&Publish
 	   								 <i class="material-icons right">send</i>
 	 							</button>
 						</div>
 
 					</form>
 				</div>
+
+				<!--  Modal structure -->
+
+				<div id="modal1" class="modal">
+				    <div class="modal-content">
+					      <h4>Special Karma Request</h4>
+					      <p>Please complete all fields before submitting your donation!</p>
+				    </div>
+				    <div class="modal-footer">
+				   		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+				    </div>
+			    </div> <!-- close --> <!-- modal -->
+
 
 			</div>
 			<!-- //close container center -->
@@ -127,7 +140,14 @@
 </body>
 
 <script type="text/javascript">
+
+$(document).ready(function() {
+
+	 //Materialize CSS parralax function
+		  $('.parallax').parallax();
+
 	// Initialize Firebase
+
 	var config = {
 		apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
 		authDomain: "fir-project-ca268.firebaseapp.com",
@@ -140,23 +160,58 @@
 	firebase.initializeApp(config);
 
 	//START DONATE.HTML JS
-	// var user = firebase.auth().currentUser.uid
-	var donateFood = $("#donateFood").val();
-	var menuNumber = $("#menuNumber").val();
-	var value = $("#value").val();
-	var pickUp = $("pickUp").val();
-	var temp = {
-		donateFood: donateFood,
-		menuNumber: menuNumber,
-		value: value,
-		pickUp: pickUp
-	};
 
-	// firebase.database.ref("/user").push(temp);
+	$("#submitBtn").on("click", function(event) {
 
+		event.preventDefault();
+
+		if (($("#donateFood").val() == "") || ($("#menuNumber").val() == "") || ($("#value").val() == "") || ($("#pickUp").val() == "")) {
+
+			$('#modal1').modal(); //initialize modal
+			$('#modal1').modal('open'); //open modal if any field is empty
+
+		}
+
+		else {
+
+			var donateFood = $("#donateFood").val().trim();
+
+			var menuNumber = $("#menuNumber").val().trim();
+
+			var value = $("#value").val().trim();
+
+			var pickUp = $("#pickUp").val().trim();
+
+
+			// var user = firebase.auth().currentUser.uid;
+			var user = 2;
+
+			var temp = {
+
+				userId: user,
+				donateFood: donateFood,
+				menuNumber: menuNumber,
+				value: value,
+				pickUp: pickUp
+			};
+
+			console.log(temp);
+
+			firebase.database().ref('/donations').push(temp);
+
+			$("#donateFood").val("");
+			$("#menuNumber").val("");
+			$("#value").val("");
+			$("#pickUp").val("");
+
+		}
+		// return firebase.database().ref("/donations");
+
+	});
 
 
 	//END DONATE.HTML JS
+}); //close document ready function
 </script>
 
 </html>

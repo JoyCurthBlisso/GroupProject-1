@@ -5,14 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setup Page</title>
-
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/style.css">
-
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel=“stylesheet” href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 
   </script>
 </head>
@@ -42,8 +42,14 @@
   </header>
 
   <main>
-    <div class="section white">
 
+
+    <div class="parallax-container">
+         <div class="parallax"><img src="assets/staff.jpg"></div>
+    </div>
+
+
+    <div class="section white">
 
       <div class="container">
         <div class="card">
@@ -71,19 +77,21 @@
               <br></br>
               Address: <input type="text" id="organization-address" name="organization-address">
               <br></br>
+              <button class="btn waves-effect waves-light" type="button" name="action" id="submit">Submit</button>
             </form>
 
             <form class="card-content" id="restaurant-form" hidden>
               Restaurant: <input type="text" id="restaurant" name="restaurant">
               <br></br>
-              Pickup Address: <input type="text" id="restaurant-address" name="restaurant-address">
+              Zip Code: <input type="text" id="zipCode" name="zipcode">
               <br></br>
-              <div id=“yelp”>
-                <input type=“button” value=“yelp api”></button>
-              </div>
+
+              <button id="yelp" type="button" value="yelp api">yelp</button>
+
+              <div id="yelpInfo"</div>
             </form>
 
-            <button class="btn waves-effect waves-light" type="submit" name="action" id="submit">Submit</button>
+
 
           </div>
 
@@ -92,11 +100,33 @@
 
     </div>
     <!-- close section -->
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/food.jpg"></div>
+    </div>
+
+
   </main>
+
+
+      <footer class="page-footer footer-copyright deep-orange darken-1">
+        <div class="container">
+          <h5 class="center-align"><strong>Copyright &copy; karma<span class="flip">K</span>oins</strong></h5>
+        </div>
+      </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
 </body>
+
 <script type="text/javascript">
   //START SETUP PAGE JS
   $(document).ready(function() {
+
+   //Materialize CSS parralax function
+      $('.parallax').parallax();
+
 
     // Initialize Firebase
     var config = {
@@ -149,10 +179,20 @@
     });
 
     submit.on("click", function(event) {
-      var name = $("#restaurant").val();
-      var address = $("#restaurant-address").val();
-      var database = firebase.database()
-      database.ref().push(name).push(address);
+      event.preventDefault();
+      var organization = $("#organization").val().trim();
+      var organizationAddress = $("#organization-address").val().trim();
+      // var user = firebase.auth().currentUser.uid;
+      var user = "clark";
+
+      var profile = {
+        user: user,
+        organization: organization,
+        organizationAddress: organizationAddress
+      };
+      console.log(profile);
+
+      firebase.database().ref("/users").push(profile);
     });
 
   });
@@ -160,8 +200,9 @@
 
 
 
+
   //END SETUP PAGE JS
 </script>
-<script src=“assets/javascript/yelp.js”></script>
+<script src="assets/javascript/yelp.js"></script>
 
 </html>
