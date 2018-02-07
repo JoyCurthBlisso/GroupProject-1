@@ -65,7 +65,7 @@ $(document).ready(function() {
 
     firebase.database().ref("/users").push(profile);
 
-    // location.href="Angels.html"
+    location.href="Donate.html"
 
   });
 });
