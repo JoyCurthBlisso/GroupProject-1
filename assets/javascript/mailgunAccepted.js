@@ -1,3 +1,5 @@
+//FOR THE ANGELS.HTML PAGE (CONFRIM DONATOR THAT SOMEONE ACCEPTED THEIR DONATION)
+
 $(document).ready(function() {
 
 function donatorAcceptedEmail(donationType, receiver, pickUpTime, contactName) {
@@ -13,7 +15,7 @@ function donatorAcceptedEmail(donationType, receiver, pickUpTime, contactName) {
 			from: "jojoenos@gmail.com",
 			to: "jojoenos@gmail.com",
 			subject: "Hello from KarmaFoodBank",
-			html: text	
+			html: text
 
 			},
 
@@ -29,12 +31,11 @@ function donatorAcceptedEmail(donationType, receiver, pickUpTime, contactName) {
 		var donationType = $("#donateFood").val().trim();
 		var receiver = $("#menuNumber").val().trim();
 		var pickUpTime = $("#value").val().trim();
-		var contactName = 
+		var contactName =
 
-		donatorEmail(donationType, receiver, pickUpTime, contactName) //this order matters and matches donatorEmail function argument list.
+		donatorAcceptedEmail(donationType, receiver, pickUpTime, contactName) //this order matters and matches donatorEmail function argument list.
 
 	})
 
 
 });
-
