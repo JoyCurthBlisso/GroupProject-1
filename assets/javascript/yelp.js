@@ -37,8 +37,16 @@ $(document).ready(function() {
         // var img = $('<div>Name: ' + item.name);
         // call
 
-        var organizationYelpAddress = item.location.address1 + ", " + item.location.city + ", " + item.location.city + " " + item.location.state + " " + item.location.zip_code;
-        var organizationYelpList = $('<div>' + item.name + ' Location: ' + item.location.address1 + ' ' + item.location.city + " " + item.location.state + " " + item.location.zip_code + '<button type="button" class="selectName" data-name="'+ item.name + '" data-address="' + organizationYelpAddress + '"">submit</button></div>');
+        var organizationYelpAddress = item.location.address1 + ", " + item.location.city + ", " + 
+            item.location.city + " " + item.location.state + " " + item.location.zip_code;
+
+
+        var organizationYelpList = $('<div>' + item.name + ' Location: ' + item.location.address1 + ' '
+           + item.location.city + " " + item.location.state + " " + item.location.zip_code + 
+           '<button type="button" class="selectName" data-name="'+ item.name + '" data-address="' + organizationYelpAddress + 
+           '"">Submit</button></div>');
+
+
         $("#yelpInfo").append(organizationYelpList);
       });
 
@@ -47,23 +55,27 @@ $(document).ready(function() {
 
 
   };
+
   $(document).on("click", ".selectName", function(event) {
 
     var selectedDonor = $(this);
     console.log(selectedDonor.data('name'));
 
     event.preventDefault();
+
     // var user = firebase.auth().currentUser.uid;
-    var user = "TESTFEB5";
+    var user = 2;
 
     var profile = {
       user: user,
-      organization: selectedDonor.data('name'),
-      organizationAddress: selectedDonor.data('address')
+      restaurant: selectedDonor.data('name'),
+      restaurantAddress: selectedDonor.data('address')
     };
+
     console.log(profile);
 
-    firebase.database().ref("/users").push(profile);
+    // firebase.database().ref("/users").push(profile); 
+    firebase.database().ref("/users/" + user + "/profile").set(profile);
 
     location.href="Donate.html"
 

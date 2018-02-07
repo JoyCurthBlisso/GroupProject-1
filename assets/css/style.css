@@ -79,5 +79,10 @@ body {
 .parallax-container {
       height: 150px;
     }
+
+#yelpInfo {
+    padding: 3px;
+    margin: 3px;
+}    
  
 

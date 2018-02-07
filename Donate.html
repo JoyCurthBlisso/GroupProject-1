@@ -63,7 +63,7 @@
 						<div class="row">
 
 							<div class="input-field col s12">
-								<input placeholder="ex: pizzas, desert, full menus" id="donateFood" type="text" class="validate">
+								<input placeholder="ex: pizzas, desserts, full menus" id="donateFood" type="text" class="validate">
 								<label for="donateFood"><h5>What would you like to donate today?</h5></label>
 							</div>
 
@@ -72,7 +72,7 @@
 						<div class="row">
 
 							<div class="input-field col s12">
-								<input placeholder="2, 4, 6, how many portions you have :)" id="menuNumber" type="text" class="validate">
+								<input placeholder="2, 4, 6, how many portions you want to offer :)" id="menuNumber" type="text" class="validate">
 								<label for="menuNumber"><h5>For how many people?</h5></label>
 							</div>
 
@@ -82,7 +82,7 @@
 
 							<div class="input-field col s12">
 								<input placeholder="$value" id="value" type="text" class="validate">
-								<label for="value"><h5>Aproximate value:</h5></label>
+								<label for="value"><h5>Approximate value:</h5></label>
 							</div>
 
 						</div>
@@ -197,7 +197,10 @@ $(document).ready(function() {
 
 			console.log(temp);
 
-			firebase.database().ref('/donations').push(temp);
+			firebase.database().ref('donations/' + user).push(temp); //pushed once into donations branch
+
+
+			firebase.database().ref('users/' + user + "/donations").push(temp); //and, here, under each user
 
 			$("#donateFood").val("");
 			$("#menuNumber").val("");

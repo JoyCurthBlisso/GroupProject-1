@@ -126,6 +126,7 @@
 </body>
 
 <script type="text/javascript">
+	
 	$(document).ready(function() {
 		//Materialize CSS parralax function
 		$('.parallax').parallax();
@@ -144,11 +145,25 @@
 
 		var donationTable = $("#donationTable");
 
-		firebase.database().ref('/donations').on("child_added", function(snapshot) {
+		firebase.database().ref('donations').on("child_added", function(snapshot) {
 
 			// Log everything that's coming out of snapshot
-
 			console.log(snapshot.val());
+
+			function getParent(snapshot) {
+			  // You can get the reference (A Firebase object) from a snapshot
+			  // using .ref().
+			  var ref = snapshot.ref();
+			  // Now simply find the parent and return the name.
+			  return ref.parent().name();
+			}
+
+			var testRef = new Firebase("https://example.firebaseIO-demo.com/foo/bar");
+			testRef.once("value", function(snapshot) {
+			  // Should alert "Name of the parent: foo".
+			  alert("Name of the parent: " + getParent(snapshot));
+			});
+			
 
 			donationTable.append("<tr><th>restaurant</th><th>address</th><th>"+ snapshot.val().donateFood + "</th><th>"+ snapshot.val().menuNumber + "</th><th>"+ snapshot.val().pickUp + "</th><th><p><input type='checkbox' class='filled-in' id='filled-in-box'/><label for='filled-in-box'></label></p></tr>")
 
