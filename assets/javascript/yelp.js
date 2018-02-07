@@ -48,13 +48,13 @@ $(document).ready(function() {
 
   };
   $(document).on("click", ".selectName", function(event) {
-    
+
     var selectedDonor = $(this);
     console.log(selectedDonor.data('name'));
 
     event.preventDefault();
     // var user = firebase.auth().currentUser.uid;
-    var user = "clark";
+    var user = "TESTFEB5";
 
     var profile = {
       user: user,
@@ -63,7 +63,7 @@ $(document).ready(function() {
     };
     console.log(profile);
 
-    firebase.database().ref().push(profile);
+    firebase.database().ref("/users").push(profile);
 
     // location.href="Angels.html"
 
