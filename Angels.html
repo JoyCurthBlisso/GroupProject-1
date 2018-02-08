@@ -126,6 +126,7 @@
 </body>
 
 <script type="text/javascript">
+	
 	$(document).ready(function() {
 		//Materialize CSS parralax function
 		$('.parallax').parallax();
@@ -142,34 +143,61 @@
 
 		firebase.initializeApp(config);
 
+		var database = firebase.database();
+
 		var donationTable = $("#donationTable");
 
-		firebase.database().ref('/donations').on("child_added", function(snapshot) {
+		var tableBegin;
+
+		var user = 2;
+
+
+
+
+		 database.ref("users/" + user + "/profile/").on("value", function(snapshot) {
+             console.log(snapshot.val());
+             
+             tableBegin = "<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress + 
+                "</th>";
+                console.log(tableBegin);
+             
+             // donationTable.append("<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress + 
+             //     "</th>");
+
+             return tableBegin;
+        }, function (errorObject) {
+          console.log("The read failed: " + errorObject.code);
+        });
+
+
+
+
+		firebase.database().ref('users/' + user + '/donations').on("child_added", function(snapshot) {
 
 			// Log everything that's coming out of snapshot
-
 			console.log(snapshot.val());
 
-			donationTable.append("<tr><th>restaurant</th><th>address</th><th>"+ snapshot.val().donateFood + "</th><th>"+ snapshot.val().menuNumber + "</th><th>"+ snapshot.val().pickUp + "</th><th><p><input type='checkbox' class='filled-in' id='filled-in-box'/><label for='filled-in-box'></label></p></tr>")
+			var userKey = snapshot.ref.getKey();
+			console.log(userKey); //logs user id
 
-			// Change the HTML to reflect
 
-			// $("#name-display").text(snapshot.val().name);
-      //
-			// $("#email-display").text(snapshot.val().email);
-      //
-			// $("#age-display").text(snapshot.val().age);
-      //
-			// $("#comment-display").text(snapshot.val().comment);
+			var tableComplete = tableBegin + "<td>"+ snapshot.val().donateFood + "</th><th>"+ snapshot.val().menuNumber + "</th><th>"+ snapshot.val().pickUp + "</th><th><p><input type='checkbox' class='filled-in' id='" + userKey + "' /><label for='" + userKey+ "''></label></p></tr>";
+
+			 console.log(tableComplete);
+
+
+			donationTable.append(tableComplete);
+
 
 			// Handle the errors
+
+			tableComplete = "";
 
 		}, function(errorObject) {
 
 			console.log("Errors handled: " + errorObject.code);
 
 		});
-
 
 
 

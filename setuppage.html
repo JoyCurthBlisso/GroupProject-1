@@ -77,7 +77,7 @@
               <br></br>
               Address: <input type="text" id="organization-address" name="organization-address">
               <br></br>
-              <button class="btn waves-effect waves-light" type="button" name="action" id="submit">Submit</button>
+              <button class="btn waves-effect waves-light" type="button" name="action" id="submitOrg">Submit</button>
             </form>
 
             <form class="card-content" id="restaurant-form" hidden>
@@ -86,9 +86,10 @@
               Zip Code: <input type="text" id="zipCode" name="zipcode">
               <br></br>
 
-              <button id="yelp" type="button" value="yelp api">yelp</button>
-
-              <div id="yelpInfo"</div>
+              <button id="yelp" type="button" value="yelp api" class="btn waves-effect waves-light">Search through Yelp</button>
+              <br />
+             
+              <div id="yelpInfo"></div>
             </form>
 
 
@@ -178,21 +179,26 @@
       //hide buttons
     });
 
-    submit.on("click", function(event) {
+    $("#submitOrg").on("click", function(event) {
       event.preventDefault();
+
       var organization = $("#organization").val().trim();
       var organizationAddress = $("#organization-address").val().trim();
+     
       // var user = firebase.auth().currentUser.uid;
-      var user = "clark";
+      var user = 2;
 
       var profile = {
         user: user,
         organization: organization,
         organizationAddress: organizationAddress
       };
+
       console.log(profile);
 
-      firebase.database().ref("/users").push(profile);
+      firebase.database().ref("/users/" + user + "/profile").set(profile); //changed .push with .set, because you only want to be able to set it once, and not append to it new info, for that specific user.uid
+
+      location.href="Angels.html"
     });
 
   });
