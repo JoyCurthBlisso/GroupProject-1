@@ -17,56 +17,39 @@ $(document).ready(function() {
 
   //START AUTHENTICATION
 
-  var currentUid = null;
+  if (firebase.auth().currentUser =! null) {
+    goToHome();
+  }
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    // onAuthStateChanged listener triggers every time the user ID token changes.
-    // This could happen when a new user signs in or signs out.
-    // It could also happen when the current user ID token expires and is refreshed.
-    if (user && user.uid != currentUid) {
-      // Update the UI when a new user signs in.
-      // Otherwise ignore if this is a token refresh.
-      // Update the current user UID.
-
-      currentUid = user.uid;
-      console.log(currentUid);
-
-
-    } else {
-      // Sign out operation. Reset the current user UID.
-      currentUid = null;
-      console.log("no user signed in");
-
-      // FirebaseUI config.
-      var uiConfig = {
-        signInSuccessUrl: 'https://joycurthblisso.github.io/GroupProject-1/setuppage.html',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
-        // Terms of service url.
-        tosUrl: 'https://clarkwmcd.github.io/'
+  else {
+    console.log("no user logged in")
+    var uiConfig = {
+       signInSuccessUrl: 'https://joycurthblisso.github.io/GroupProject-1/setuppage.html',
+       signInOptions: [
+        // Specify providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+       ],
+       // Terms of service url can be specified and will show up in the widget.
+       tosUrl: '<your-tos-url>'
       };
-
-      // Initialize the FirebaseUI Widget using Firebase.
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-    }
-
-  });
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  }
 
   //END AUTHENTICATION
 
 
 
   function goToHome() {
+    // if (firebase.database().ref("/users/donations") === 2)
     location.href = "https://joycurthblisso.github.io/GroupProject-1/Donate.html"
+    // else {
+    // location.href = "https://joycurthblisso.github.io/GroupProject-1/Angels.html"
+    // }
   };
-
-
 
 
 });
