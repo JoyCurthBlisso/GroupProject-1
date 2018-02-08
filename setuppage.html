@@ -88,7 +88,7 @@
 
               <button id="yelp" type="button" value="yelp api" class="btn waves-effect waves-light">Search through Yelp</button>
               <br />
-             
+
               <div id="yelpInfo"></div>
             </form>
 
@@ -184,9 +184,9 @@
 
       var organization = $("#organization").val().trim();
       var organizationAddress = $("#organization-address").val().trim();
-     
+
       // var user = firebase.auth().currentUser.uid;
-      var user = 2;
+      var user = 7;
 
       var profile = {
         user: user,
@@ -196,9 +196,9 @@
 
       console.log(profile);
 
-      firebase.database().ref("/users/" + user + "/profile").set(profile); //changed .push with .set, because you only want to be able to set it once, and not append to it new info, for that specific user.uid
-
-      location.href="Angels.html"
+      firebase.database().ref("/users/" + user + "/profile").set(profile).then(function () {
+        location.href="Angels.html"
+      }); //changed .push with .set, because you only want to be able to set it once, and not append to it new info, for that specific user.uid
     });
 
   });

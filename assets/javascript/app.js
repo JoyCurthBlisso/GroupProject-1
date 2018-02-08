@@ -44,29 +44,12 @@ $(document).ready(function() {
 
 
   function goToHome() {
+    // if (firebase.database().ref("/users/donations") === 2)
     location.href = "https://joycurthblisso.github.io/GroupProject-1/Donate.html"
+    // else {
+    // location.href = "https://joycurthblisso.github.io/GroupProject-1/Angels.html"
+    // }
   };
-
-
-
-  //START DONATE.HTML JS
-  var user = firebase.auth().currentUser.uid
-  var donateFood = $("#donateFood");
-  var menuNumber = $("#menuNumber");
-  var value = $("#value");
-  var pickUp = $("pickUp");
-  var temp = {
-        donateFood: donateFood,
-        menuNumber: menuNumber,
-        value: value,
-        pickUp: pickUp
-      };
-
-  firebase.database.ref("/user").push(temp);
-
-
-
-  //END DONATE.HTML JS
 
 
 });
