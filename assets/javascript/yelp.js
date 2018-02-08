@@ -37,13 +37,13 @@ $(document).ready(function() {
         // var img = $('<div>Name: ' + item.name);
         // call
 
-        var organizationYelpAddress = item.location.address1 + ", " + item.location.city + ", " + 
+        var organizationYelpAddress = item.location.address1 + ", " + item.location.city + ", " +
             item.location.city + " " + item.location.state + " " + item.location.zip_code;
 
 
         var organizationYelpList = $('<div>' + item.name + ' Location: ' + item.location.address1 + ' '
-           + item.location.city + " " + item.location.state + " " + item.location.zip_code + 
-           '<button type="button" class="selectName" data-name="'+ item.name + '" data-address="' + organizationYelpAddress + 
+           + item.location.city + " " + item.location.state + " " + item.location.zip_code +
+           '<button type="button" class="selectName" data-name="'+ item.name + '" data-address="' + organizationYelpAddress +
            '"">Submit</button></div>');
 
 
@@ -64,20 +64,24 @@ $(document).ready(function() {
     event.preventDefault();
 
     // var user = firebase.auth().currentUser.uid;
-    var user = 2;
+    var user = 3;
 
     var profile = {
       user: user,
-      restaurant: "Roxy",
-      restaurantAddress: "Roxy's mansion"
+      restaurant: selectedDonor.data('name'),
+      restaurantAddress: selectedDonor.data('address')
     };
 
     console.log(profile);
 
-    // firebase.database().ref("/users").push(profile); 
-    firebase.database().ref("/users/" + user + "/profile").set(profile);
+    // firebase.database().ref("/users").push(profile).then(function(){
+    //     location.href="Donate.html";
+    // });
+    firebase.database().ref("/users/" + user + "/profile").set(profile).then(function(){
+        location.href="Donate.html";
+    });;
 
-    location.href="Donate.html"
 
   });
+
 });
