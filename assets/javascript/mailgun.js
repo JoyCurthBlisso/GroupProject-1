@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 
-  Initialize Firebase
+  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
     authDomain: "fir-project-ca268.firebaseapp.com",
@@ -11,6 +11,8 @@ $(document).ready(function() {
     storageBucket: "",
     messagingSenderId: "60944439745"
   };
+
+}
 
   firebase.initializeApp(config);
   var database = firebase.database();	
@@ -30,7 +32,8 @@ $(document).ready(function() {
 		console.log(pickUpTime);
 		console.log("This is userEmail:", userEmail);
 
-	function donatorEmail(userEmail, donationType, numPeople, donationValue, pickUpTime) {
+	// function donatorEmail(userEmail, donationType, numPeople, donationValue, pickUpTime) {
+	function donatorEmail() {
 		var queryURL = "https://api.mailgun.net/v3/";
 		var hdrVal = "Basic " + btoa("api:key-ef72536d6301ae8ec42279773af8eaf9");
 		var userEmail = "jojoenos@gmail.com";
@@ -60,8 +63,8 @@ $(document).ready(function() {
 			});
 		}
 
-		donatorEmail(userEmail, donationType, numPeople, donationValue, pickUpTime); //this order matters and matches donatorEmail function argument list.
-
+		donatorEmail(); //this order matters and matches donatorEmail function argument list.
+		// donatorEmail(userEmail, donationType, numPeople, donationValue, pickUpTime);
 	});
 
 });
