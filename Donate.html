@@ -159,6 +159,11 @@ $(document).ready(function() {
 
 	firebase.initializeApp(config);
 
+	var database = firebase.database();
+
+	// var user = firebase.auth().currentUser.uid; //grab uid
+	// var email = firebase.auth().currentUser.email; //grab email address for restaurant
+
 	//START DONATE.HTML JS
 
 	$("#submitBtn").on("click", function(event) {
@@ -184,11 +189,14 @@ $(document).ready(function() {
 
 
 			// var user = firebase.auth().currentUser.uid;
-			var user = 3;
+			var user = 2;
+			var email = "roxanamilea@ymail.com";
 
 			var temp = {
 
 				userId: user,
+				email: email, //added email to the object
+
 				donateFood: donateFood,
 				menuNumber: menuNumber,
 				value: value,
@@ -197,10 +205,19 @@ $(document).ready(function() {
 
 			console.log(temp);
 
-			// firebase.database().ref('donations/' + user).push(temp); //pushed once into donations branch
+			var newKey = database.ref('donations/').push().key; //generate unique key for both pushes
+			console.log(newKey);
+
+			database.ref('donations/'+ newKey).set(temp); //you SET once in the donations branch with unique key
 
 
-			firebase.database().ref('users/' + user + "/donations").set(temp); //and, here, under each user
+			database.ref('users/' + user + "/donations/" + newKey).set(temp); //and, here, under each user, with the same UNIQUE key
+
+
+			// // firebase.database().ref('donations/' + user).push(temp); //pushed once into donations branch
+
+
+			// firebase.database().ref('users/' + user + "/donations").set(temp); //and, here, under each user
 
 			$("#donateFood").val("");
 			$("#menuNumber").val("");
