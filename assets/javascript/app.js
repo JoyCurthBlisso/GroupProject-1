@@ -44,10 +44,10 @@ $(document).ready(function() {
 
 
   function goToHome() {
-    // if (firebase.database().ref("/users/donations") === 2)
-    location.href = "https://joycurthblisso.github.io/GroupProject-1/Donate.html"
-    // else {
-    // location.href = "https://joycurthblisso.github.io/GroupProject-1/Angels.html"
+    // if (firebase.database().ref("/users/"+ firebase.auth().currentUser.uid + "/profile") === "organization") {
+    location.href = "https://joycurthblisso.github.io/GroupProject-1/Angels.html"
+    // } else {
+    // location.href = "https://joycurthblisso.github.io/GroupProject-1/Donate.html"
     // }
   };
 
