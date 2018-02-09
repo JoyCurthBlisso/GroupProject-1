@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   //START AUTHENTICATION
 
-  if (firebase.auth().currentUser =! null) {
+  if (firebase.auth().currentUser != null) {
     goToHome();
   }
 

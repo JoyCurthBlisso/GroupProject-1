@@ -63,8 +63,8 @@ $(document).ready(function() {
 
     event.preventDefault();
 
-    // var user = firebase.auth().currentUser.uid;
-    var user = 3;
+    var user = firebase.auth().currentUser.uid;
+    // var user = 3;
 
     var profile = {
       user: user,
