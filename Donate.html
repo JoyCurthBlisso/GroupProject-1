@@ -188,9 +188,10 @@ $(document).ready(function() {
 			var pickUp = $("#pickUp").val().trim();
 
 
-			// var user = firebase.auth().currentUser.uid;
-			var user = 2;
-			var email = "roxanamilea@ymail.com";
+			var user = firebase.auth().currentUser.uid;
+			var email = firebase.auth().currentUser.email;
+			// var user = 3;
+			// var email = "roxanamilea@ymail.com";
 
 			var temp = {
 

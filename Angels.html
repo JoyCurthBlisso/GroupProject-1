@@ -127,7 +127,7 @@
 </body>
 
 <script type="text/javascript">
-	
+
 	$(document).ready(function() {
 		//Materialize CSS parralax function
 		$('.parallax').parallax();
@@ -153,22 +153,22 @@
 
 		var emailArray = [];
 
-		// var user = firebase.auth().currentUser.uid; //grab uid
+		var user = firebase.auth().currentUser.uid; //grab uid
 		// var email = firebase.auth().currentUser.email; //grab email address
 
 
-		var user = 2; //this is the restaurant user ID
+		// var user = 2; //this is the restaurant user ID
 
 
 		//save restaurant profile + create first two table data boxes
 
 		database.ref("users/" + user + "/profile/").on("value", function(snapshot) {
              console.log(snapshot.val());
-             
-             tableBegin = "<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress + 
+
+             tableBegin = "<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress +
                 "</th>";
                 console.log(tableBegin);
-             
+
 
              return tableBegin;
 
@@ -213,10 +213,11 @@
 		//user id will change here, this ID will be for the angel!!!
 
 		$("#btnHappy").on("click", function() {
+			console.log("ROXANA THE HAPPY BUTTON WAS CLICKED!!")
 
 			var obj = {};
-			
-			emailArray = [];			
+
+			emailArray = [];
 
 			$(".happy").each(function (index, element) {
 
@@ -228,7 +229,7 @@
 					console.log(key); //this is the donation unique key
 
 					database.ref('donations/' + key).once('value').then(function(snapshot) {
-						
+
 						var donorEmail = snapshot.val().email;
 						console.log(donorEmail);
 
@@ -246,12 +247,12 @@
 
 					//grab email address based on the id
 
-				}	
+				}
 
 						console.log('outerspace' + emailArray);
 				});// close button happy
 
-		database.ref().update(obj);	
+		database.ref().update(obj);
 
 
 		});
