@@ -1,18 +1,18 @@
 //FOR THE ANGELS.HTML PAGE (CONFRIM MESSENGER THEY ARE PICKING UP FOOD)
 
 $(document).ready(function() {
-	// Initialize Firebase
-		var config = {
-			apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
-			authDomain: "fir-project-ca268.firebaseapp.com",
-			databaseURL: "https://fir-project-ca268.firebaseio.com",
-			projectId: "fir-project-ca268",
-			storageBucket: "",
-			messagingSenderId: "60944439745"
-		};
-
-		firebase.initializeApp(config); 
-		var database = firebase.database();		
+	// // Initialize Firebase
+	// 	var config = {
+	// 		apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
+	// 		authDomain: "fir-project-ca268.firebaseapp.com",
+	// 		databaseURL: "https://fir-project-ca268.firebaseio.com",
+	// 		projectId: "fir-project-ca268",
+	// 		storageBucket: "",
+	// 		messagingSenderId: "60944439745"
+	// 	};
+  //
+	// 	firebase.initializeApp(config);
+	// 	var database = firebase.database();
 
 	$("#donation").on("click",function(event) {
 		if ($("#filled-in-box").is(":checked")) {
@@ -25,7 +25,9 @@ $(document).ready(function() {
 				var donationType = $("#donateFood").text();
 				var pickUpTime = $("#pickUpTime").text();
 				var numOfItems = $("#number").text();
-				var userEmail = firebase.auth().currentUser.email;
+				// var userEmail = firebase.auth().currentUser.email;
+				var userEmail = "jojoenos@gmail.com";
+
 				var text = `<p>This is to confirm that you have agreed to pick up this donation today: </p> <ul> <p> <li> Donation: `+ donationType +` </li> </p> <p> <li> Number of items: `+ numOfItems +` </li> </p> <p> <li> Pick up time: `+ pickUpTime +` </li> </p> <p>Thank you so much for your KarmaFoodBank charity! </p> <p style="text-align:center;">— KarmaFoodBank </p>`
 
 				$.ajax({
@@ -36,7 +38,7 @@ $(document).ready(function() {
 						from: "jojoenos@gmail.com",
 						to: "jojoenos@gmail.com", //userEmail
 						subject: "Hello from KarmaFoodBank",
-						html: text	
+						html: text
 						},
 
 					}).then(function(response){
@@ -58,7 +60,7 @@ $(document).ready(function() {
 				var userEmail = firebase.auth().currentUser.email;
 
 				console.log(donationType);
-	
+
 				$.ajax({
 					url: "https://us-central1-empower-hope.cloudfunctions.net/api/mailgun-api/sandboxc502a7a2dae748469de9804c3742317f.mailgun.org/messages",
 					method: "POST",
@@ -67,7 +69,7 @@ $(document).ready(function() {
 						from: "jojoenos@gmail.com",
 						to: "jojoenos@gmail.com",
 						subject: "Hello from KarmaFoodBank",
-						html: text	
+						html: text
 
 						},
 
@@ -75,7 +77,7 @@ $(document).ready(function() {
 					});
 				}
 
-			donatorAcceptedEmail() 
+			donatorAcceptedEmail()
 
 		} else {
 			var checkCheckBox = "Please select at least one checkbox." // logic to display error message on form
@@ -95,7 +97,7 @@ $(document).ready(function() {
 				errorPlacement: function(error,element) {
 					var placement = $(element).data("error");
 					if (placement) {
-						$(placement).append(error) 				
+						$(placement).append(error)
 					} else {
 						error.insertAfter(element);
 					}
@@ -108,9 +110,3 @@ $(document).ready(function() {
 	});
 
 });
-
-
-
-
-
-
