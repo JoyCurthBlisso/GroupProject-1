@@ -22,14 +22,14 @@ $(document).ready(function() {
 
   var tableBegin;
 
-	var user = "tkHYANYecOWFQ8JnDmQZsfzVBns1";
-	var email = "clarkwmcd@gmail.com";
+	// var user = "tkHYANYecOWFQ8JnDmQZsfzVBns1";
+	// var email = "clarkwmcd@gmail.com";
 
   var emailArray = [];
 
 
-  // var user = firebase.auth().currentUser.uid; //grab uid
-  // var email = firebase.auth().currentUser.email; //grab email address for restaurant
+  var user = firebase.auth().currentUser.uid; //grab uid
+  var email = firebase.auth().currentUser.email; //grab email address for restaurant
 
   //START DONATE.HTML JS
 
@@ -150,70 +150,66 @@ $(document).ready(function() {
 		var menuNumber = childSnapshot.val().menuNumber;
 		var value = childSnapshot.val().value;
 		var pickUp = childSnapshot.val().pickUp;
+    var userId = childSnapshot.val().user;
 		console.log(restaurant);
 		console.log(restaurantAddress);
 
 		var donationTable = $("#donationTable");
-		donationTable.append("<tr><th>"+ restaurant +"</th><th>" + restaurantAddress +"</th><th>"+ donateFood +"</th><th>"+ menuNumber + "</th><th>"+ pickUp + "</th><th><p><input type='checkbox' class='filled-in' id='filled-in-box'/><label for='filled-in-box'></label></p></tr>");
+		donationTable.append("<tr><th>"+ restaurant +"</th><th>" + restaurantAddress +"</th><th>"+ donateFood +"</th><th>"+ menuNumber + "</th><th>"+ pickUp + "</th><th><p><input type='checkbox' class='filled-in happy' id='"+ userId +"'/><label for='"+ userId + "'></label></p></tr>");
 
 	}, function(errorObject) {
 		console.log("The read failed: " + errorObject.code);
 	});
 
   //ANGELS PAGE => user id will change here, this ID will be for the angel!!!
-
+  //
   // $("#btnHappy").on("click", function() {
-  // 	console.log("ROXANA THE HAPPY BUTTON WAS CLICKED!!")
-  //
-  // 	// var user = firebase.auth().currentUser.uid; // grabs the id of the angel!!!
-  // 	var user = "-L4wsAp60-uIFTwGFVmy"; // grabs the id of the angel!!!
-  //
-  // 	// var email = firebase.auth().currentUser.email; // grabs email address of the angels, for JoAnn's API
-  // 	var email = "clarkwmcd@gmail.com"; // grabs email address of the angels, for JoAnn's API
-  //
-  //
+  // 	console.log("ROXANA THE HAPPY BUTTON WAS CLICKED!!");
+  //   var angelEmail = firebase.auth().currentUser.email;
+    // var donatorEmail = $("#userId").email;
+
+
+
+
   // 	var obj = {};
   //
   // 	emailArray = [];
   //
-  //
-  //
-  // 	$(".happy").each(function (index, element) { //going through each input field
-  //
-  //
-  // 		if (element.checked) {
-  //
-  // 			console.log(element);
-  // 			var key = $(this).attr("id");
-  // 			console.log(key); //this is the donation unique key
-  //
-  // 			database.ref('donations/' + key).once('value').then(function(snapshot) {
-  //
-  // 				var donorEmail = snapshot.val().email;
-  // 				console.log(donorEmail);
-  //
-  // 				emailArray.push(donorEmail);
-  // 				console.log(emailArray);
-  //
-  // 				return emailArray;
-  // 			});
-  //
-  // 			// console.log("outside array" + email.Array);
-  //
-  //
-  // 			obj['users/' + user + '/donations/' + $(this).attr("id")] = null;
-  // 			 $(this).parents("tr").remove(); //removes row from table
-  //
-  //
-  //
-  // 		}
-  //
-  // 				console.log('outerspace' + emailArray);
-  // 		});// close button happy
+  	// $(".happy").each(function (index, element) { //going through each input field
+    //
+  	// 	if (element.checked) {
+    //
+  	// 		console.log(element);
+  	// 		var key = $(this).attr("id");
+  	// 		console.log(key); //this is the donation unique key
+    //
+  	// 		database.ref('donations/' + key).once('value').then(function(snapshot) {
+    //
+  	// 			var donorEmail = snapshot.val().email;
+  	// 			console.log(donorEmail);
+    //
+  	// 			emailArray.push(donorEmail);
+  	// 			console.log(emailArray);
+    //
+  	// 			return emailArray;
+  	// 		});
+
+  			// console.log("outside array" + email.Array);
+
+      //
+  		// 	obj['users/' + user + '/donations/' + $(this).attr("id")] = null;
+  		// 	 $(this).parents("tr").remove(); //removes row from table
+      //
+      //
+      //
+  		// }
+
+  				// console.log('outerspace' + emailArray);
+  		// });// close button happy
   //
   // database.ref().update(obj);
   //
-  //
+
   // });
 
 

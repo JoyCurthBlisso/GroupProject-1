@@ -1,18 +1,18 @@
 //FOR THE ANGELS.HTML PAGE (CONFRIM MESSENGER THEY ARE PICKING UP FOOD)
 
 $(document).ready(function() {
-	// Initialize Firebase
-		var config = {
-			apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
-			authDomain: "fir-project-ca268.firebaseapp.com",
-			databaseURL: "https://fir-project-ca268.firebaseio.com",
-			projectId: "fir-project-ca268",
-			storageBucket: "",
-			messagingSenderId: "60944439745"
-		};
-
-		firebase.initializeApp(config);
-		var database = firebase.database();
+	// // Initialize Firebase
+	// 	var config = {
+	// 		apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
+	// 		authDomain: "fir-project-ca268.firebaseapp.com",
+	// 		databaseURL: "https://fir-project-ca268.firebaseio.com",
+	// 		projectId: "fir-project-ca268",
+	// 		storageBucket: "",
+	// 		messagingSenderId: "60944439745"
+	// 	};
+  //
+	// 	firebase.initializeApp(config);
+	// 	var database = firebase.database();
 
 	$("#donation").on("click",function(event) {
 		if ($("#filled-in-box").is(":checked")) {
@@ -25,7 +25,9 @@ $(document).ready(function() {
 				var donationType = $("#donateFood").text();
 				var pickUpTime = $("#pickUpTime").text();
 				var numOfItems = $("#number").text();
-				var userEmail = firebase.auth().currentUser.email;
+				// var userEmail = firebase.auth().currentUser.email;
+				var userEmail = "jojoenos@gmail.com";
+
 				var text = `<p>This is to confirm that you have agreed to pick up this donation today: </p> <ul> <p> <li> Donation: `+ donationType +` </li> </p> <p> <li> Number of items: `+ numOfItems +` </li> </p> <p> <li> Pick up time: `+ pickUpTime +` </li> </p> <p>Thank you so much for your KarmaFoodBank charity! </p> <p style="text-align:center;">— KarmaFoodBank </p>`
 
 				$.ajax({

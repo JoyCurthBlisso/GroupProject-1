@@ -3,18 +3,16 @@
 $(document).ready(function() {
 
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
-    authDomain: "fir-project-ca268.firebaseapp.com",
-    databaseURL: "https://fir-project-ca268.firebaseio.com",
-    projectId: "fir-project-ca268",
-    storageBucket: "",
-    messagingSenderId: "60944439745"
-  };
-
-}
-
-  firebase.initializeApp(config);
+  // var config = {
+  //   apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
+  //   authDomain: "fir-project-ca268.firebaseapp.com",
+  //   databaseURL: "https://fir-project-ca268.firebaseio.com",
+  //   projectId: "fir-project-ca268",
+  //   storageBucket: "",
+  //   messagingSenderId: "60944439745"
+  // };
+  //
+  // firebase.initializeApp(config);
   var database = firebase.database();
   	console.log(firebase);
 
