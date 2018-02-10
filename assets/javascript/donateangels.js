@@ -198,7 +198,6 @@ $(document).ready(function() {
 
     ///This is where happy button ends
 
-    database.ref("/users/" + user + "/profile").update(temp);
    
 
   });
