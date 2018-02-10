@@ -145,7 +145,9 @@ $(document).ready(function() {
   }); // close submitBTn button event on donate
 
 	database.ref("users/" + user).on("child_added", function(childSnapshot) {
-		var restaurant = childSnapshot.val().restaurant;
+    var user = firebase.auth().currentUser.uid; //grab uid
+    var email = firebase.auth().currentUser.email; //grab email address for restaurant
+    var restaurant = childSnapshot.val().restaurant;
 		var restaurantAddress = childSnapshot.val().restaurantAddress;
 		var donateFood = childSnapshot.val().donateFood;
 		var menuNumber = childSnapshot.val().menuNumber;
