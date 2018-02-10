@@ -106,19 +106,21 @@ $(document).ready(function() {
 
 			//get the information for the first two rows - USER PROFILE
 
-			database.ref("users/" + user + "/profile/").on("value", function(snapshot) {
-	             console.log(snapshot.val());
+			database.ref("users/" + user).on("child_added", function(snapshot) {
+							 console.log(snapshot.val());
 
-	             tableBegin = "<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress +
-	                "</th>";
-	                console.log(tableBegin);
+							 // tableBegin = "<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress +
+							 //    "</th>";
+							 //    console.log(tableBegin);
+
+							 // console.log(snapshot.child("profile"));
 
 
-	             return tableBegin;
+							 return tableBegin;
 
-		    }, function (errorObject) {
-		          console.log("The read failed: " + errorObject.code);
-		    });
+				}, function (errorObject) {
+							console.log("The read failed: " + errorObject.code);
+				});
 
 
 			// get the information for the next row - populate with donation
@@ -164,9 +166,12 @@ $(document).ready(function() {
 		$("#btnHappy").on("click", function() {
 			console.log("ROXANA THE HAPPY BUTTON WAS CLICKED!!")
 
-			var user = firebase.auth().currentUser.uid; // grabs the id of the angel!!!
+			// var user = firebase.auth().currentUser.uid; // grabs the id of the angel!!!
+			var user = "-L4wsAp60-uIFTwGFVmy"; // grabs the id of the angel!!!
 
-			var email = firebase.auth().currentUser.email; // grabs email address of the angels, for JoAnn's API
+			// var email = firebase.auth().currentUser.email; // grabs email address of the angels, for JoAnn's API
+			var email = "clarkwmcd@gmail.com"; // grabs email address of the angels, for JoAnn's API
+
 
 			var obj = {};
 

@@ -15,7 +15,7 @@ $(document).ready(function() {
 }
 
   firebase.initializeApp(config);
-  var database = firebase.database();	
+  var database = firebase.database();
   	console.log(firebase);
 
 	$("#submitBtn").on("click", function(event) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 		// var userEmail = firebase.auth().currentUser.email;
 		var donationType = $("#donateFood").val().trim();
 		console.log(donationType);
-		// localstorage.setItem('userEmail', 'joann'); // sets it localstorage   
+		// localstorage.setItem('userEmail', 'joann'); // sets it localstorage
 		// var x = localstorage.getItem('hello'); // 'joann'`
 		// console.log(x);
 		var text = `<p>Thank you so much for your generous donation.</p> <p>Your benevolence is appreciated and you will reap the karmic rewards of that. </p>  <p>This is to confirm that you have offered this to the community today: <ul> </p> <p> <li> Donation: `+ donationType +` </li> </p> <p> <li> Approximate value:  `+ donationValue + `</li> </p> <li> For number of people: `+ numPeople +` </li> <p> <li> Pick up time: `+ pickUpTime +` </li> </ul> </p>  <p>You will receive an email if an organization in need will be able to benefit from this donation. </p> <p>Thank you again for your KarmaFoodBank charity! </p> <p style='text-align:center'>— KarmaFoodBank </p>`
