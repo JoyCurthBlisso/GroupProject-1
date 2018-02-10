@@ -19,6 +19,7 @@
 	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+
 </head>
 
 
@@ -123,10 +124,13 @@
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="assets/javascript/donateangels.js"></script>
+	<!-- <script type="text/javascript" src="assets/javascript/mailgun.js"></script> -->
 </body>
 
-<script type="text/javascript">
-	
+<!-- <script type="text/javascript">
+
 	$(document).ready(function() {
 		//Materialize CSS parralax function
 		$('.parallax').parallax();
@@ -149,25 +153,24 @@
 
 		var tableBegin;
 
-
 		var emailArray = [];
 
-		// var user = firebase.auth().currentUser.uid; //grab uid
+		var user = firebase.auth().currentUser.uid; //grab uid
 		// var email = firebase.auth().currentUser.email; //grab email address
 
 
-		var user = 2; //this is the restaurant user ID
+		// var user = 2; //this is the restaurant user ID
 
 
 		//save restaurant profile + create first two table data boxes
 
 		database.ref("users/" + user + "/profile/").on("value", function(snapshot) {
              console.log(snapshot.val());
-             
-             tableBegin = "<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress + 
+
+             tableBegin = "<tr><th>" + snapshot.val().restaurant + "</th><th>" + snapshot.val().restaurantAddress +
                 "</th>";
                 console.log(tableBegin);
-             
+
 
              return tableBegin;
 
@@ -212,11 +215,12 @@
 		//user id will change here, this ID will be for the angel!!!
 
 		$("#btnHappy").on("click", function() {
+			console.log("ROXANA THE HAPPY BUTTON WAS CLICKED!!")
 
 			//here, we need to grab the currentUser id again, since he is the one clicking the button
 			var obj = {};
-			
-			emailArray = [];			
+
+			emailArray = [];
 
 			$(".happy").each(function (index, element) {
 
@@ -228,7 +232,7 @@
 					console.log(key); //this is the donation unique key
 
 					database.ref('donations/' + key).once('value').then(function(snapshot) {
-						
+
 						var donorEmail = snapshot.val().email;
 						console.log(donorEmail);
 
@@ -246,18 +250,18 @@
 
 					//grab email address based on the id
 
-				}	
+				}
 
 						console.log('outerspace' + emailArray);
 				});// close button happy
 
-		database.ref().update(obj);	
+		database.ref().update(obj);
 
 
 		});
 
 
 	});
-</script>
+</script> -->
 
 </html>

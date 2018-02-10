@@ -136,10 +136,12 @@
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/donateangels.js"></script>
+	<!-- <script type="text/javascript" src="assets/javascript/mailgun.js"></script> -->
 
 </body>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 $(document).ready(function() {
 
@@ -188,9 +190,10 @@ $(document).ready(function() {
 			var pickUp = $("#pickUp").val().trim();
 
 
-			// var user = firebase.auth().currentUser.uid;
-			var user = 2;
-			var email = "roxanamilea@ymail.com";
+			var user = firebase.auth().currentUser.uid;
+			var email = firebase.auth().currentUser.email;
+			// var user = 3;
+			// var email = "roxanamilea@ymail.com";
 
 			var temp = {
 
@@ -232,6 +235,6 @@ $(document).ready(function() {
 
 	//END DONATE.HTML JS
 }); //close document ready function
-</script>
+</script> -->
 
 </html>
