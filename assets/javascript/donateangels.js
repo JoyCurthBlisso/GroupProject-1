@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
   //Materialize CSS parralax function
@@ -20,24 +21,22 @@ $(document).ready(function() {
 
   var donationTable = $("#donationTable");
 
-  var tableBegin;
-
-	// var user = "tkHYANYecOWFQ8JnDmQZsfzVBns1";
-	// var email = "clarkwmcd@gmail.com";
+	var user = "tkHYANYecOWFQ8JnDmQZsfzVBns1";
+	var email = "clarkwmcd@gmail.com";
 
   var emailArray = [];
 
 
-  var user = firebase.auth().currentUser.uid; //grab uid
-  var email = firebase.auth().currentUser.email; //grab email address for restaurant
+  // var user = firebase.auth().currentUser.uid; //grab uid
+  // var email = firebase.auth().currentUser.email; //grab email address for restaurant
 
   //START DONATE.HTML JS
 
   $("#submitBtn").on("click", function(event) {
 
     event.preventDefault();
-    var user = firebase.auth().currentUser.uid; //grab uid
-    var email = firebase.auth().currentUser.email; //grab email address for restaurant
+    // var user = firebase.auth().currentUser.uid; //grab uid
+    // var email = firebase.auth().currentUser.email; //grab email address for restaurant
     // var user = firebase.auth().currentUser.uid;
     // var email = firebase.auth().currentUser.email;
 
@@ -145,8 +144,8 @@ $(document).ready(function() {
   }); // close submitBTn button event on donate
 
 	database.ref("users/" + user).on("child_added", function(childSnapshot) {
-    var user = firebase.auth().currentUser.uid; //grab uid
-    var email = firebase.auth().currentUser.email; //grab email address for restaurant
+    // var user = firebase.auth().currentUser.uid; //grab uid
+    // var email = firebase.auth().currentUser.email; //grab email address for restaurant
     var restaurant = childSnapshot.val().restaurant;
 		var restaurantAddress = childSnapshot.val().restaurantAddress;
 		var donateFood = childSnapshot.val().donateFood;

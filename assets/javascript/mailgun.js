@@ -19,7 +19,7 @@ $(document).ready(function() {
 	$("#submitBtn").on("click", function(event) {
 		event.preventDefault();
 	// var userEmail = firebase.auth().currentUser.email;
-		var userEmail = "jojoenos@gmail.com";
+		var userEmail = "clarkwmcd@gmail.com";
 		var donationType = $("#donateFood").val().trim();
 		var numPeople = $("#menuNumber").val().trim();
 		var donationValue = $("#value").val().trim();
@@ -34,7 +34,7 @@ $(document).ready(function() {
 	function donatorEmail() {
 		var queryURL = "https://api.mailgun.net/v3/";
 		var hdrVal = "Basic " + btoa("api:key-ef72536d6301ae8ec42279773af8eaf9");
-		var userEmail = "jojoenos@gmail.com";
+		var userEmail = "clarkwmcd@gmail.com";
 		// var userEmail = firebase.auth().currentUser.email;
 		var donationType = $("#donateFood").val().trim();
 		console.log(donationType);
@@ -48,7 +48,7 @@ $(document).ready(function() {
 			method: "POST",
 			headers: {"Authorization": hdrVal},
 			data: {
-				from: "jojoenos@gmail.com",
+				from: "clarkwmcd@gmail.com",
 				to: userEmail,
 				subject: "Hello from KarmaFoodBank",
 				html: text
