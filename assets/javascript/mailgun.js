@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 	$("#submitBtn").on("click", function(event) {
 		event.preventDefault();
-		// var toUser = (from Firebase);
+	// var userEmail = firebase.auth().currentUser.email;
 		var userEmail = "jojoenos@gmail.com";
 		var donationType = $("#donateFood").val().trim();
 		var numPeople = $("#menuNumber").val().trim();

@@ -11,8 +11,8 @@ $(document).ready(function() {
 			messagingSenderId: "60944439745"
 		};
 
-		firebase.initializeApp(config); 
-		var database = firebase.database();		
+		firebase.initializeApp(config);
+		var database = firebase.database();
 
 	$("#donation").on("click",function(event) {
 		if ($("#filled-in-box").is(":checked")) {
@@ -36,7 +36,7 @@ $(document).ready(function() {
 						from: "jojoenos@gmail.com",
 						to: "jojoenos@gmail.com", //userEmail
 						subject: "Hello from KarmaFoodBank",
-						html: text	
+						html: text
 						},
 
 					}).then(function(response){
@@ -58,7 +58,7 @@ $(document).ready(function() {
 				var userEmail = firebase.auth().currentUser.email;
 
 				console.log(donationType);
-	
+
 				$.ajax({
 					url: "https://us-central1-empower-hope.cloudfunctions.net/api/mailgun-api/sandboxc502a7a2dae748469de9804c3742317f.mailgun.org/messages",
 					method: "POST",
@@ -67,7 +67,7 @@ $(document).ready(function() {
 						from: "jojoenos@gmail.com",
 						to: "jojoenos@gmail.com",
 						subject: "Hello from KarmaFoodBank",
-						html: text	
+						html: text
 
 						},
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
 					});
 				}
 
-			donatorAcceptedEmail() 
+			donatorAcceptedEmail()
 
 		} else {
 			var checkCheckBox = "Please select at least one checkbox." // logic to display error message on form
@@ -95,7 +95,7 @@ $(document).ready(function() {
 				errorPlacement: function(error,element) {
 					var placement = $(element).data("error");
 					if (placement) {
-						$(placement).append(error) 				
+						$(placement).append(error)
 					} else {
 						error.insertAfter(element);
 					}
@@ -108,9 +108,3 @@ $(document).ready(function() {
 	});
 
 });
-
-
-
-
-
-
