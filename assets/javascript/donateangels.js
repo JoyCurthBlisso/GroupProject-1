@@ -78,55 +78,5 @@ $(document).ready(function() {
 	});
 
 
-          // future devs
-  
-  // $("#btnHappy").on("click", function() {
-  // 	console.log("ROXANA THE HAPPY BUTTON WAS CLICKED!!");
-  //   var angelEmail = firebase.auth().currentUser.email;
-    // var donatorEmail = $("#userId").email;
-
-
-
-
-  // 	var obj = {};
-  //
-  // 	emailArray = [];
-  //
-  	// $(".happy").each(function (index, element) { //going through each input field
-    //
-  	// 	if (element.checked) {
-    //
-  	// 		console.log(element);
-  	// 		var key = $(this).attr("id");
-  	// 		console.log(key); //this is the donation unique key
-    //
-  	// 		database.ref('donations/' + key).once('value').then(function(snapshot) {
-    //
-  	// 			var donorEmail = snapshot.val().email;
-  	// 			console.log(donorEmail);
-    //
-  	// 			emailArray.push(donorEmail);
-  	// 			console.log(emailArray);
-    //
-  	// 			return emailArray;
-  	// 		});
-
-  			// console.log("outside array" + email.Array);
-
-      //
-  		// 	obj['users/' + user + '/donations/' + $(this).attr("id")] = null;
-  		// 	 $(this).parents("tr").remove(); //removes row from table
-      //
-      //
-      //
-  		// }
-
-  				// console.log('outerspace' + emailArray);
-  		// });// close button happy
-  //
-  // database.ref().update(obj);
-  //
-
-  // });
 
 }); 
