@@ -36,7 +36,8 @@ $(document).ready(function() {
   $("#submitBtn").on("click", function(event) {
 
     event.preventDefault();
-
+    var user = firebase.auth().currentUser.uid; //grab uid
+    var email = firebase.auth().currentUser.email; //grab email address for restaurant
     // var user = firebase.auth().currentUser.uid;
     // var email = firebase.auth().currentUser.email;
 
