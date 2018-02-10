@@ -1,4 +1,3 @@
-//FOR THE ANGELS.HTML PAGE (CONFRIM DONATOR THAT SOMEONE ACCEPTED THEIR DONATION)
 
 $(document).ready(function() {
 
@@ -22,20 +21,17 @@ function donatorAcceptedEmail(donationType, receiver, pickUpTime, contactName) {
 		}).then(function(response){
 		   console.log(response);
 		});
-
 	}
 
 
 	$(".submit").click(function() {
-		// var toUser = (from Firebase);
+	
 		var donationType = $("#donateFood").val().trim();
 		var receiver = $("#menuNumber").val().trim();
 		var pickUpTime = $("#value").val().trim();
 		var contactName =
 
-		donatorAcceptedEmail(donationType, receiver, pickUpTime, contactName) //this order matters and matches donatorEmail function argument list.
+		donatorAcceptedEmail(donationType, receiver, pickUpTime, contactName) 
 
 	})
-
-
 });

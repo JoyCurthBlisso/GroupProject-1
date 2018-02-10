@@ -12,7 +12,6 @@
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> <! //Bootstrap CDN -->
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -105,7 +104,7 @@
 					</form>
 				</div>
 
-				<!--  Modal structure -->
+			
 
 				<div id="modal1" class="modal">
 				    <div class="modal-content">
@@ -115,11 +114,11 @@
 				    <div class="modal-footer">
 				   		  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
 				    </div>
-			    </div> <!-- close --> <!-- modal -->
+			    </div> 
 
 
 			</div>
-			<!-- //close container center -->
+		
 		</div>
 
 		<div class="parallax-container">
@@ -142,101 +141,5 @@
 
 
 </body>
-
-<!-- <script type="text/javascript">
-
-$(document).ready(function() {
-
-	 //Materialize CSS parralax function
-		  $('.parallax').parallax();
-
-	// Initialize Firebase
-
-	var config = {
-		apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
-		authDomain: "fir-project-ca268.firebaseapp.com",
-		databaseURL: "https://fir-project-ca268.firebaseio.com",
-		projectId: "fir-project-ca268",
-		storageBucket: "",
-		messagingSenderId: "60944439745"
-	};
-
-	firebase.initializeApp(config);
-
-	var database = firebase.database();
-
-	// var user = firebase.auth().currentUser.uid; //grab uid
-	// var email = firebase.auth().currentUser.email; //grab email address for restaurant
-
-	//START DONATE.HTML JS
-
-	$("#submitBtn").on("click", function(event) {
-
-		event.preventDefault();
-
-		if (($("#donateFood").val() == "") || ($("#menuNumber").val() == "") || ($("#value").val() == "") || ($("#pickUp").val() == "")) {
-
-			$('#modal1').modal(); //initialize modal
-			$('#modal1').modal('open'); //open modal if any field is empty
-
-		}
-
-		else {
-
-			var donateFood = $("#donateFood").val().trim();
-
-			var menuNumber = $("#menuNumber").val().trim();
-
-			var value = $("#value").val().trim();
-
-			var pickUp = $("#pickUp").val().trim();
-
-
-			var user = firebase.auth().currentUser.uid;
-			var email = firebase.auth().currentUser.email;
-			// var user = 3;
-			// var email = "roxanamilea@ymail.com";
-
-			var temp = {
-
-				userId: user,
-				email: email, //added email to the object
-
-				donateFood: donateFood,
-				menuNumber: menuNumber,
-				value: value,
-				pickUp: pickUp
-			};
-
-			console.log(temp);
-
-			var newKey = database.ref('donations/').push().key; //generate unique key for both pushes
-			console.log(newKey);
-
-			database.ref('donations/'+ newKey).set(temp); //you SET once in the donations branch with unique key
-
-
-			database.ref('users/' + user + "/donations/" + newKey).set(temp); //and, here, under each user, with the same UNIQUE key
-
-
-			// // firebase.database().ref('donations/' + user).push(temp); //pushed once into donations branch
-
-
-			// firebase.database().ref('users/' + user + "/donations").set(temp); //and, here, under each user
-
-			$("#donateFood").val("");
-			$("#menuNumber").val("");
-			$("#value").val("");
-			$("#pickUp").val("");
-
-		}
-		// return firebase.database().ref("/donations");
-
-	});
-
-
-	//END DONATE.HTML JS
-}); //close document ready function
-</script> -->
 
 </html>

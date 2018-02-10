@@ -100,8 +100,7 @@
       </div>
 
     </div>
-    <!-- close section -->
-
+  
     <div class="parallax-container">
         <div class="parallax"><img src="assets/food.jpg"></div>
     </div>
@@ -122,14 +121,13 @@
 </body>
 
 <script type="text/javascript">
-  //START SETUP PAGE JS
+
   $(document).ready(function() {
 
-   //Materialize CSS parralax function
+
       $('.parallax').parallax();
 
 
-    // Initialize Firebase
     var config = {
       apiKey: "AIzaSyBR4mFvJiYUIQDIVoDzKCWZyxyeJ-C5rCw",
       authDomain: "fir-project-ca268.firebaseapp.com",
@@ -140,7 +138,7 @@
     };
 
     firebase.initializeApp(config);
-    //END Initialize Firebase
+  
 
     var organizationForm = $("#organization-form");
     var restaurantForm = $("#restaurant-form");
@@ -152,31 +150,19 @@
     submit.hide();
 
     $("#donor").on("click", function(event) {
-      console.log("donor clicked")
       restaurantForm.show();
       submit.show();
-
       organizationForm.hide();
-      // $("#organization").val("");
-      // $("#organization-address").val("");
       buttons.hide();
-      //hide #organization-form
-      //show #restaurant-form
-      //hide buttons
+    
     });
 
     $("#requester").on("click", function(event) {
-      console.log("requester clicked")
       organizationForm.show();
       submit.show();
-
       restaurantForm.hide();
-      // $("#restaurant").val("");
-      // $("#restaurant-address").val("");
       buttons.hide();
-      //show #organization-form
-      //hide #restaurant-form
-      //hide buttons
+   
     });
 
     $("#submitOrg").on("click", function(event) {
@@ -185,7 +171,6 @@
       var organization = $("#organization").val().trim();
       var organizationAddress = $("#organization-address").val().trim();
       var user = firebase.auth().currentUser.uid;
-      // var user = "tkHYANYecOWFQ8JnDmQZsfzVBns1";
 
       var profile = {
         user: user,
@@ -193,20 +178,14 @@
         organizationAddress: organizationAddress
       };
 
-      console.log(profile);
-
       firebase.database().ref("/users/" + user + "/profile").set(profile).then(function () {
         location.href="Angels.html"
-      }); //changed .push with .set, because you only want to be able to set it once, and not append to it new info, for that specific user.uid
+      }); 
     });
 
   });
 
 
-
-
-
-  //END SETUP PAGE JS
 </script>
 <script src="assets/javascript/yelp.js"></script>
 

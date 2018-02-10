@@ -6,7 +6,7 @@ $(document).ready(function() {
   });
 
   function yelpInfo() {
-    //pass in name and zip code
+  
     var restaurant = $("#restaurant").val();
     var zipCode = $("#zipCode").val();
     var queryURLSearchYelp = 'https://api.yelp.com/v3/businesses/search';
@@ -29,14 +29,9 @@ $(document).ready(function() {
     }).then(function(response) {
       yelpObject = response;
 
-      console.log(response);
       $("#yelpInfo").html("");
       $.each(response.businesses, function(index, item) {
-        // var img = $('<div>Name: ' + item.name + '</div><br/> <img src="' + item.image_url  + '" />');
-        // $("#yelpInfo").append(img);
-        // var img = $('<div>Name: ' + item.name);
-        // call
-
+    
         var organizationYelpAddress = item.location.address1 + ", " + item.location.city + ", " +
             item.location.city + " " + item.location.state + " " + item.location.zip_code;
 
@@ -49,34 +44,24 @@ $(document).ready(function() {
 
         $("#yelpInfo").append(organizationYelpList);
       });
-
-
     });
-
-
   };
 
   $(document).on("click", ".selectName", function(event) {
 
     var selectedDonor = $(this);
-    console.log(selectedDonor.data('name'));
 
     event.preventDefault();
 
     var user = firebase.auth().currentUser.uid;
-    // var user = "tkHYANYecOWFQ8JnDmQZsfzVBns1";
-
+ 
     var profile = {
       user: user,
       restaurant: selectedDonor.data('name'),
       restaurantAddress: selectedDonor.data('address')
     };
 
-    console.log(profile);
-
-    // firebase.database().ref("/users").push(profile).then(function(){
-    //     location.href="Donate.html";
-    // });
+  
     firebase.database().ref("/users/" + user + "/profile").set(profile).then(function(){
         location.href="Donate.html";
     });;
