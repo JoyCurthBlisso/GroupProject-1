@@ -192,9 +192,6 @@ $(document).ready(function() {
           };
 
         });
-
-
-      }
      });
       ///This is where happy button ends
 
