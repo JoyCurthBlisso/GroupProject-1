@@ -96,7 +96,6 @@ $(document).ready(function() {
     });
 
 
-  ////THIS IS WHERE THE hpyButton starts
     $("#btnHappy").on("click", function(event) {
 
       event.preventDefault();
@@ -193,9 +192,6 @@ $(document).ready(function() {
 
         });
      });
-      ///This is where happy button ends
-
-    
 
 
   	   database.ref("users/" + user).on("child_added", function(childSnapshot) {
